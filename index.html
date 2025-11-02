@@ -3,75 +3,334 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CyberGuard Security - Protect Your Digital Life</title>
-    <link rel="stylesheet" href="style.css"> <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
+    <title>DefendEdge | Deployment Security Analyzer</title>
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Custom styles to ensure the page uses the Inter font and smooth scrolling */
+        body {
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+        }
+        .text-neon {
+            color: #6366f1; /* Indigo-500 */
+            text-shadow: 0 0 5px rgba(99, 102, 241, 0.5);
+        }
+    </style>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'primary-dark': '#0f172a', /* Slate-900 */
+                        'secondary-dark': '#1e293b', /* Slate-800 */
+                        'accent': '#6366f1', /* Indigo-500 */
+                    }
+                }
+            }
+        }
+    </script>
 </head>
-<body>
+<body class="bg-primary-dark text-gray-100 min-h-screen">
 
-    <header class="main-header">
-        <div class="container">
-            <div class="logo">
-                <img src="images/icon-shield.png" alt="CyberGuard Shield Logo">
-                <h1>CyberGuard Security</h1>
+    <!-- Navigation Bar (Kept simple) -->
+    <header class="sticky top-0 z-50 bg-secondary-dark/95 backdrop-blur-sm shadow-lg">
+        <nav class="container mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between py-4">
+            <!-- Logo -->
+            <div class="flex items-center space-x-2">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                </svg>
+                <span class="text-xl font-bold tracking-wider">Deployment <span class="text-accent">Analyzer</span></span>
             </div>
-            <nav class="main-nav">
-                <ul>
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#services">Our Services</a></li>
-                    <li><a href="#threats">Current Threats</a></li>
-                    <li><a href="#resources">Resources</a></li>
-                    <li><a href="#contact">Contact Us</a></li>
-                </ul>
-            </nav>
-        </div>
+
+            <!-- Menu Placeholder -->
+            <span class="text-sm text-gray-400 hidden sm:block">Control Gap Assessment Tool</span>
+
+            <!-- Mobile Menu is simplified as it's a single-page tool -->
+            <div class="md:hidden">
+                 <button onclick="document.getElementById('quiz-container').scrollIntoView({ behavior: 'smooth' })" class="bg-accent/20 text-accent font-semibold py-1 px-3 rounded-lg text-sm transition duration-300">
+                    Start
+                </button>
+            </div>
+        </nav>
     </header>
 
     <main>
+        <!-- Hero Section -->
+        <section id="home" class="py-20 md:py-32 lg:py-40 text-center container mx-auto px-4">
+            <div class="max-w-4xl mx-auto">
+                <h1 class="text-4xl sm:text-5xl lg:text-7xl font-extrabold leading-tight mb-6 tracking-tight">
+                    Assess Your <span class="text-neon">Deployment</span> Security
+                </h1>
+                <p class="text-xl sm:text-2xl text-gray-400 mb-10">
+                    Answer a few key questions to instantly identify potential control gaps in your website's infrastructure and deployment pipeline.
+                </p>
+                <button onclick="startQuiz()" class="bg-accent hover:bg-indigo-600 text-white font-bold py-3 px-8 rounded-xl text-lg shadow-xl transition duration-300 transform hover:scale-105">
+                    Start Assessment Now
+                </button>
+            </div>
+        </section>
 
-        <section id="home" class="hero-section">
-            <div class="container">
-                <img src="images/hero-banner.jpg" alt="Cybersecurity professional working on a secure network" class="hero-image">
-                <div class="hero-content">
-                    <h2>Welcome to CyberGuard</h2>
-                    <p>In today's connected world, <strong>cybersecurity is non-negotiable</strong>. We provide the tools, knowledge, and protection you need to stay safe online, from personal devices to enterprise networks.</p>
-                    <a href="#services" class="button">Explore Our Solutions</a>
+        <!-- Quiz Container Section -->
+        <section id="quiz-container" class="py-20 bg-secondary-dark/50 border-t border-b border-gray-700/50 hidden">
+            <div class="container mx-auto px-4 max-w-3xl">
+                <div class="bg-primary-dark p-8 rounded-xl shadow-2xl border border-accent/50">
+                    
+                    <div id="quiz-header" class="mb-6 pb-4 border-b border-gray-700">
+                        <h2 class="text-2xl font-bold text-accent">Deployment Security Check</h2>
+                        <p id="progress-text" class="text-sm text-gray-400 mt-1">Question 1 of 5</p>
+                    </div>
+
+                    <!-- Quiz Content Area -->
+                    <div id="question-area">
+                        <!-- Questions will be rendered here -->
+                        <div class="text-center p-10">Loading...</div>
+                    </div>
+
+                    <!-- Navigation Buttons -->
+                    <div id="quiz-navigation" class="flex justify-between mt-8 pt-4 border-t border-gray-700">
+                        <button id="prev-btn" onclick="prevQuestion()" class="bg-gray-700 hover:bg-gray-600 text-white font-semibold py-2 px-4 rounded-lg transition duration-300 opacity-50" disabled>
+                            &larr; Previous
+                        </button>
+                        <button id="next-btn" onclick="nextQuestion()" class="bg-accent hover:bg-indigo-600 text-white font-semibold py-2 px-4 rounded-lg transition duration-300" disabled>
+                            Next &rarr;
+                        </button>
+                    </div>
+
                 </div>
             </div>
         </section>
 
-        <section id="services" class="services-section">
-            <div class="container">
-                <h2>Our Core Security Services</h2>
-                <div class="service-grid">
-                    <div class="service-item">
-                        <img src="images/icon-vulnerability.png" alt="Vulnerability assessment icon">
-                        <h3>Vulnerability Assessment</h3>
-                        <p>Identify weaknesses in your systems before attackers do. We provide a detailed report and actionable steps.</p>
+        <!-- Results Section (Hidden initially) -->
+        <section id="results-container" class="py-20 hidden">
+            <div class="container mx-auto px-4 max-w-4xl">
+                <div class="bg-secondary-dark p-8 rounded-xl shadow-2xl border border-red-500/50">
+                    <h2 class="text-4xl font-extrabold text-red-400 text-center mb-4">Assessment Complete!</h2>
+                    <p class="text-xl text-gray-300 text-center mb-8">
+                        Based on your answers, here is a breakdown of potential control gaps in your environment.
+                    </p>
+
+                    <!-- Score Summary -->
+                    <div class="bg-primary-dark p-6 rounded-lg mb-8 text-center border-b-4 border-accent">
+                        <p class="text-lg font-semibold text-gray-400">Security Posture Score:</p>
+                        <p id="final-score" class="text-5xl font-extrabold mt-2 text-neon">75%</p>
                     </div>
-                    <div class="service-item">
-                        <img src="images/icon-threat-detection.png" alt="Threat detection icon">
-                        <h3>Managed Threat Detection (MTD)</h3>
-                        <p>24/7 monitoring for real-time detection and rapid response to malicious activity.</p>
+
+                    <!-- Gap Details -->
+                    <h3 class="text-2xl font-bold text-gray-200 mb-4 border-b border-gray-700 pb-2">Identified Gaps (High Priority)</h3>
+                    <div id="gaps-list" class="space-y-4">
+                        <!-- Gaps will be listed here -->
                     </div>
-                    <div class="service-item">
-                        <img src="images/icon-training.png" alt="Employee training icon">
-                        <h3>Employee Training</h3>
-                        <p>The human element is the strongest defense. Train your team against phishing and social engineering.</p>
-                    </div>
-                    <div class="service-item">
-                        <img src="images/icon-encryption.png" alt="Data encryption icon">
-                        <h3>Data Encryption & Privacy</h3>
-                        <p>Ensure your sensitive data is protected both at rest and in transit using industry-leading encryption standards.</p>
-                    </div>
+                    <p id="no-gaps-message" class="text-lg text-green-400 text-center py-8 hidden">
+                        Excellent! Based on your responses, no critical gaps were immediately identified.
+                    </p>
+
+                    <button onclick="window.location.reload()" class="w-full mt-10 bg-gray-600 hover:bg-gray-700 text-white font-bold py-3 px-4 rounded-lg transition duration-300">
+                        Restart Assessment
+                    </button>
                 </div>
             </div>
         </section>
+    </main>
 
-        <section id="threats" class="threats-section">
-            <div class="container">
-                <h2>🚨 Current Cybersecurity Alerts</h2>
-                <div class="alert-grid">
-                    <article class="alert-card">
-                        <h3>Phishing Scam Alert: "Urgent Invoice" Emails</h3>
-                        <p class="alert-date">October 25, 2025</p>
-                        <p>A new wave of highly deceptive emails is circulating, urging users to click a link to view an "urgent outstanding invoice." <strong>DO NOT CLICK
+    <!-- Footer -->
+    <footer class="bg-secondary-dark border-t border-gray-700/50 py-10 mt-10">
+        <div class="container mx-auto px-4 text-center">
+            <div class="flex items-center justify-center space-x-2 mb-4">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                </svg>
+                <span class="text-lg font-bold tracking-wider">Defend<span class="text-accent">Edge</span></span>
+            </div>
+            <p class="text-gray-500 text-sm">&copy; 2025 DefendEdge Security. Control Gap Analyzer.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript for Quiz Logic -->
+    <script>
+        const questions = [
+            {
+                text: "Do you enforce HTTPS (SSL/TLS) only, redirecting all HTTP traffic, and use a modern TLS version (1.2+)?",
+                gap: {
+                    id: "data_in_transit",
+                    name: "Data In Transit Security",
+                    description: "Failure to enforce HTTPS can expose sensitive data (credentials, session tokens) to interception and eavesdropping."
+                }
+            },
+            {
+                text: "Is your database server network inaccessible directly from the public internet (i.e., only accessible from your application servers)?",
+                gap: {
+                    id: "network_segmentation",
+                    name: "Network Segmentation / Direct Exposure",
+                    description: "Direct exposure of databases dramatically increases the attack surface for critical data and is a major security risk."
+                }
+            },
+            {
+                text: "Is Multi-Factor Authentication (MFA) required for all administrative access (e.g., SSH, hosting console, CI/CD tools)?",
+                gap: {
+                    id: "credential_security",
+                    name: "Credential Security / Access Control",
+                    description: "MFA is the single most effective control against credential theft. Lacking it means a simple password breach leads to full compromise."
+                }
+            },
+            {
+                text: "Do you regularly scan all application dependencies (libraries, packages) for known vulnerabilities (CVEs)?",
+                gap: {
+                    id: "sca_vulnerability",
+                    name: "Software Composition Analysis (SCA)",
+                    description: "Outdated and vulnerable third-party libraries (e.g., Log4j, Struts) are a primary attack vector. Continuous scanning is vital."
+                }
+            },
+            {
+                text: "Do you use a Web Application Firewall (WAF) and/or a Content Delivery Network (CDN) like Cloudflare or Akamai?",
+                gap: {
+                    id: "waf_ddos",
+                    name: "DDoS Mitigation & Layer 7 Protection",
+                    description: "Without a WAF/CDN, your origin server is directly exposed to volumetric DDoS attacks and common application exploits (SQLi, XSS)."
+                }
+            },
+            // Note: Keep the total number of questions consistent for scoring (5 in this case)
+        ];
+
+        let currentQuestionIndex = 0;
+        // Stores answers: true for "Yes" (Secure), false for "No" (Gap)
+        let answers = new Array(questions.length).fill(null);
+
+        const quizContainer = document.getElementById('quiz-container');
+        const questionArea = document.getElementById('question-area');
+        const progressText = document.getElementById('progress-text');
+        const prevBtn = document.getElementById('prev-btn');
+        const nextBtn = document.getElementById('next-btn');
+        const resultsContainer = document.getElementById('results-container');
+        const gapsList = document.getElementById('gaps-list');
+        const finalScore = document.getElementById('final-score');
+        const noGapsMessage = document.getElementById('no-gaps-message');
+
+
+        function startQuiz() {
+            quizContainer.classList.remove('hidden');
+            document.getElementById('home').classList.add('hidden');
+            renderQuestion();
+            quizContainer.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function renderQuestion() {
+            if (currentQuestionIndex >= questions.length) {
+                showResults();
+                return;
+            }
+
+            const q = questions[currentQuestionIndex];
+            progressText.textContent = `Question ${currentQuestionIndex + 1} of ${questions.length}`;
+
+            // Generate HTML for the current question
+            questionArea.innerHTML = `
+                <div class="mb-8 p-4 bg-secondary-dark rounded-lg border border-gray-700">
+                    <p class="text-xl font-medium text-gray-200">${q.text}</p>
+                </div>
+                <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 justify-center">
+                    <button id="answer-yes" onclick="recordAnswer(true)" class="flex-1 py-3 px-6 rounded-lg text-lg font-bold transition duration-200 border-2 ${answers[currentQuestionIndex] === true ? 'bg-green-600 border-green-600' : 'bg-primary-dark border-gray-700 hover:bg-green-700/30'}">
+                        Yes (Secure)
+                    </button>
+                    <button id="answer-no" onclick="recordAnswer(false)" class="flex-1 py-3 px-6 rounded-lg text-lg font-bold transition duration-200 border-2 ${answers[currentQuestionIndex] === false ? 'bg-red-600 border-red-600' : 'bg-primary-dark border-gray-700 hover:bg-red-700/30'}">
+                        No (Gap)
+                    </button>
+                </div>
+            `;
+            updateNavigation();
+        }
+
+        function recordAnswer(answer) {
+            answers[currentQuestionIndex] = answer;
+            // Re-render to show selection instantly
+            renderQuestion();
+            // Automatically enable next button after selection
+            nextBtn.disabled = false;
+        }
+
+        function nextQuestion() {
+            // Only proceed if an answer has been recorded for the current question
+            if (answers[currentQuestionIndex] !== null) {
+                currentQuestionIndex++;
+                if (currentQuestionIndex < questions.length) {
+                    renderQuestion();
+                } else {
+                    showResults();
+                }
+            }
+        }
+
+        function prevQuestion() {
+            currentQuestionIndex = Math.max(0, currentQuestionIndex - 1);
+            renderQuestion();
+        }
+
+        function updateNavigation() {
+            // Update Previous Button state
+            prevBtn.disabled = currentQuestionIndex === 0;
+            prevBtn.classList.toggle('opacity-50', currentQuestionIndex === 0);
+
+            // Update Next Button text and state
+            if (currentQuestionIndex === questions.length - 1) {
+                nextBtn.textContent = 'View Results';
+            } else {
+                nextBtn.textContent = 'Next →';
+            }
+            nextBtn.disabled = answers[currentQuestionIndex] === null;
+            nextBtn.classList.toggle('opacity-50', answers[currentQuestionIndex] === null);
+        }
+
+        function showResults() {
+            quizContainer.classList.add('hidden');
+            resultsContainer.classList.remove('hidden');
+            resultsContainer.scrollIntoView({ behavior: 'smooth' });
+
+            let totalGaps = 0;
+            gapsList.innerHTML = '';
+            
+            answers.forEach((isSecure, index) => {
+                // 'No' answer (isSecure === false) indicates a gap
+                if (isSecure === false) {
+                    totalGaps++;
+                    const gap = questions[index].gap;
+                    const gapHtml = `
+                        <div class="p-4 bg-primary-dark/80 rounded-lg border-l-4 border-red-500 shadow-md">
+                            <h4 class="text-xl font-semibold text-red-400 mb-1">${gap.name}</h4>
+                            <p class="text-gray-400">${gap.description}</p>
+                        </div>
+                    `;
+                    gapsList.insertAdjacentHTML('beforeend', gapHtml);
+                }
+            });
+            
+            // Calculate Score (Score = (Total Questions - Gaps) / Total Questions * 100)
+            const score = Math.round(((questions.length - totalGaps) / questions.length) * 100);
+            finalScore.textContent = `${score}%`;
+            
+            // Adjust score display color based on result
+            if (score >= 80) {
+                finalScore.classList.remove('text-red-400', 'text-yellow-400');
+                finalScore.classList.add('text-green-400');
+                gapsList.innerHTML = '';
+                noGapsMessage.classList.remove('hidden');
+            } else if (score >= 50) {
+                finalScore.classList.remove('text-red-400', 'text-green-400');
+                finalScore.classList.add('text-yellow-400');
+                noGapsMessage.classList.add('hidden');
+            } else {
+                finalScore.classList.remove('text-green-400', 'text-yellow-400');
+                finalScore.classList.add('text-red-400');
+                noGapsMessage.classList.add('hidden');
+            }
+        }
+
+        // Initialize the first question load on window load
+        window.onload = () => {
+             // Attach start quiz to the hero button
+            document.querySelector('#home button').onclick = startQuiz;
+        };
+
+    </script>
+</body>
+</html>
