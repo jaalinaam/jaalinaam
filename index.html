@@ -4,99 +4,74 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CyberGuard Security - Protect Your Digital Life</title>
+    <link rel="stylesheet" href="style.css"> <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
 </head>
 <body>
 
-    <header>
-        <h1>🛡️ CyberGuard Security</h1>
-        <p>Your Shield in the Digital World</p>
-        <nav>
-            <ul>
-                <li><a href="#home">Home</a></li>
-                <li><a href="#services">Our Services</a></li>
-                <li><a href="#threats">Current Threats</a></li>
-                <li><a href="#resources">Resources</a></li>
-                <li><a href="#contact">Contact Us</a></li>
-            </ul>
-        </nav>
+    <header class="main-header">
+        <div class="container">
+            <div class="logo">
+                <img src="images/icon-shield.png" alt="CyberGuard Shield Logo">
+                <h1>CyberGuard Security</h1>
+            </div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#services">Our Services</a></li>
+                    <li><a href="#threats">Current Threats</a></li>
+                    <li><a href="#resources">Resources</a></li>
+                    <li><a href="#contact">Contact Us</a></li>
+                </ul>
+            </nav>
+        </div>
     </header>
-
-    <hr>
 
     <main>
 
-        <section id="home">
-            <h2>Welcome to CyberGuard</h2>
-            <p>In today's connected world, **cybersecurity is non-negotiable**. We provide the tools, knowledge, and protection you need to stay safe online, from personal devices to enterprise networks.</p>
-
-            <blockquote>
-                "Security is not a product, but a process." - Bruce Schneier
-            </blockquote>
+        <section id="home" class="hero-section">
+            <div class="container">
+                <img src="images/hero-banner.jpg" alt="Cybersecurity professional working on a secure network" class="hero-image">
+                <div class="hero-content">
+                    <h2>Welcome to CyberGuard</h2>
+                    <p>In today's connected world, <strong>cybersecurity is non-negotiable</strong>. We provide the tools, knowledge, and protection you need to stay safe online, from personal devices to enterprise networks.</p>
+                    <a href="#services" class="button">Explore Our Solutions</a>
+                </div>
+            </div>
         </section>
 
-        <hr>
-
-        <section id="services">
-            <h2>Our Core Security Services</h2>
-            <p>We offer comprehensive protection tailored to your needs:</p>
-            <dl>
-                <dt><strong>Vulnerability Assessment</strong></dt>
-                <dd>Identify weaknesses in your systems before attackers do. We provide a detailed report and actionable steps.</dd>
-
-                <dt><strong>Managed Threat Detection (MTD)</strong></dt>
-                <dd>24/7 monitoring for real-time detection and rapid response to malicious activity.</dd>
-
-                <dt><strong>Employee Training</strong></dt>
-                <dd>The human element is the strongest defense. Train your team against phishing and social engineering.</dd>
-
-                <dt><strong>Data Encryption & Privacy</strong></dt>
-                <dd>Ensure your sensitive data is protected both at rest and in transit using industry-leading encryption standards.</dd>
-            </dl>
+        <section id="services" class="services-section">
+            <div class="container">
+                <h2>Our Core Security Services</h2>
+                <div class="service-grid">
+                    <div class="service-item">
+                        <img src="images/icon-vulnerability.png" alt="Vulnerability assessment icon">
+                        <h3>Vulnerability Assessment</h3>
+                        <p>Identify weaknesses in your systems before attackers do. We provide a detailed report and actionable steps.</p>
+                    </div>
+                    <div class="service-item">
+                        <img src="images/icon-threat-detection.png" alt="Threat detection icon">
+                        <h3>Managed Threat Detection (MTD)</h3>
+                        <p>24/7 monitoring for real-time detection and rapid response to malicious activity.</p>
+                    </div>
+                    <div class="service-item">
+                        <img src="images/icon-training.png" alt="Employee training icon">
+                        <h3>Employee Training</h3>
+                        <p>The human element is the strongest defense. Train your team against phishing and social engineering.</p>
+                    </div>
+                    <div class="service-item">
+                        <img src="images/icon-encryption.png" alt="Data encryption icon">
+                        <h3>Data Encryption & Privacy</h3>
+                        <p>Ensure your sensitive data is protected both at rest and in transit using industry-leading encryption standards.</p>
+                    </div>
+                </div>
+            </div>
         </section>
 
-        <hr>
-
-        <section id="threats">
-            <h2>🚨 Current Cybersecurity Alerts</h2>
-            <article>
-                <h3>Phishing Scam Alert: "Urgent Invoice" Emails</h3>
-                <p><strong>Date:</strong> October 25, 2025</p>
-                <p>A new wave of highly deceptive emails is circulating, urging users to click a link to view an "urgent outstanding invoice." **DO NOT CLICK THE LINK.** Verify all invoice requests through official channels.</p>
-                <p><a href="read-more-phishing.html">Learn how to spot a phishing email.</a></p>
-            </article>
-
-            <article>
-                <h3>Critical Patch for Zero-Day Vulnerability</h3>
-                <p><strong>Date:</strong> October 18, 2025</p>
-                <p>Software X has released a critical patch for a recently discovered zero-day flaw. **Update your software immediately** to prevent remote code execution attacks.</p>
-            </article>
-        </section>
-
-        <hr>
-
-        <section id="resources">
-            <h2>📚 Free Security Resources</h2>
-            <ul>
-                <li><a href="guide-passwords.html">The Ultimate Guide to Strong Passwords</a></li>
-                <li><a href="checklist-home-network.html">Home Network Security Checklist</a></li>
-                <li><a href="ebook-2fa.pdf">E-Book: Why Two-Factor Authentication is Essential (PDF)</a></li>
-            </ul>
-            <p>Stay informed. Security is a continuous learning process!</p>
-        </section>
-
-    </main>
-
-    <hr>
-
-    <footer id="contact">
-        <h2>Connect With Us</h2>
-        <address>
-            <p><strong>Email:</strong> <a href="mailto:info@cyberguard.com">info@cyberguard.com</a></p>
-            <p><strong>Phone:</strong> (555) 123-4567</p>
-            <p><strong>Address:</strong> 101 Secure Ave, Cyber City, CA 90210</p>
-        </address>
-        <p><small>&copy; 2025 CyberGuard Security. All rights reserved. | <a href="privacy.html">Privacy Policy</a></small></p>
-    </footer>
-
-</body>
-</html>
+        <section id="threats" class="threats-section">
+            <div class="container">
+                <h2>🚨 Current Cybersecurity Alerts</h2>
+                <div class="alert-grid">
+                    <article class="alert-card">
+                        <h3>Phishing Scam Alert: "Urgent Invoice" Emails</h3>
+                        <p class="alert-date">October 25, 2025</p>
+                        <p>A new wave of highly deceptive emails is circulating, urging users to click a link to view an "urgent outstanding invoice." <strong>DO NOT CLICK
