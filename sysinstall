@@ -1,0 +1,23 @@
+#!/bin/bash
+sudo pacman -Syu --noconfirm plasma sddm firefox base-devel git plasma linux-headers kitty timeshift btrfs-progs vi vim nano vlc vlc-plugins-all wget ntfs-3g ghostscript kde-applications fastfetch terminator cups sane sane-airscan jellyfin-server jellyfin-web curl krita freecad solaar man
+sudo systemctl enable --now sddm.service
+sudo systemctl enable --now jellyfin.service NetworkManager
+
+###########YAY###########
+git clone https://aur.archlinux.org/yay.git
+cd yay
+makepkg -si
+cd ~
+yay -S google-chrome nvidia-580xx-dkms onlyoffice-bin
+###########ZSH###########
+sudo pacman -S zsh zsh-syntax-highlighting zsh-autosuggestions.zsh
+chsh -s /usr/bin/zsh
+wget -O ~/.zshrc https://raw.githubusercontent.com/fff7d1bc/conf-mgmt/refs/heads/master/roles/home_files/files/DOTzshrc
+exec zsh
+###########FLATPAK###########
+flatpak install -y com.core447.StreamController com.bambulab.BambuStudio
+sudo wget https://raw.githubusercontent.com/StreamController/StreamController/main/udev.rules -O /etc/udev/rules.d/60-streamdeck.rules
+
+#edit fstab from fstab arch linux
+#Freecad issue
+#QT_QPA_PLATFORM=xcb
