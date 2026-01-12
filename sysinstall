@@ -12,7 +12,7 @@ yay -S google-chrome nvidia-580xx-dkms onlyoffice-bin
 ###########ZSH###########
 sudo pacman -S zsh zsh-syntax-highlighting zsh-autosuggestions.zsh
 chsh -s /usr/bin/zsh
-wget -O ~/.zshrc https://raw.githubusercontent.com/fff7d1bc/conf-mgmt/refs/heads/master/roles/home_files/files/DOTzshrc
+wget -O ~/.zshrc https://raw.githubusercontent.com/jaalinaam/jaalinaam/refs/heads/main/.zshrc
 exec zsh
 ###########FLATPAK###########
 flatpak install -y com.core447.StreamController com.bambulab.BambuStudio
