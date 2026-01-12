@@ -1,0 +1,22 @@
+Automation Account : 
+Public network access should be disabled
+Delete lock should be enforced 
+Read-Only Lck should be used
+Hybrid Worker: Use custom credential with least priveledge
+List Hybrid Worker Machine
+------VM------------
+VM Disk should be encrypted
+No Public access
+RDP should be disabled
+Machine login with entra should be enabled
+Enable recommended alert rules
+Enable OS guest diagnostics
+Enable application health monitoring
+Integrity monitoring
+Enable secure boot
+Enable vTPM
+Login with Microsoft Entra ID
+Enable hotpatch
+
+-----General---
+Add Read only and Delete Locks to resources
