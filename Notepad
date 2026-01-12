@@ -1,0 +1,23 @@
+Section 1: Installation & Infrastructure
+·	Access Control during Install: Did we select "Install for Admins Only" to ensure the initial setup is restricted?
+·	Third-Party Domain Access: Will we grant access to third-party websites required by Salesforce to support the backup and restore infrastructure?
+·	Regional Selection: Which AWS region has been selected based on our data residency requirements and IP restrictions?
+Section 2: User Access & Security Requirements
+·	What type of user accounts will have access to configure Backup and Recover
+·	Administrative Profile: Is this account assigned the System Administrator profile.
+·	Mandatory API Permission: Is the "API Enabled" permission active for this account?
+·	Data Access Permissions: What permissions does this account has.
+·	Will we use API only user.
+·	What would be authentication method for other user/admins for Backup and Recover and what are different roles and permissions.
+Section 3: Network Security & Allowlisting
+·	Provisioning IP Range:Will we be using IP allowlist
+Section 4: Backup Policy & Strategy Decisions
+·	What would be scope of data backup i.e. Full backup, object,chats etc
+·	 Optional Inclusions: Do we need to toggle the inclusion of Knowledge articles or custom big objects, which are excluded by default?
+·	Files and Attachments: Have we checked our storage usage under the data setup menu before deciding to include files and attachments in the backup?
+·	On-Demand Strategy: Under what circumstances (e.g., deployments, mass updates, or migrations) will the team trigger on-demand backups?
+Section 5: Performance & Monitoring
+·	What alerts and notifications will be configured
+Section 6: Sandboxing
+·	Will we be suing Sandbox.
+·	If yes how will we be masking sensitive data.
